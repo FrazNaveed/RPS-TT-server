@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const userSchema = new mongoose.Schema({
+const AuthSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Please fill your email"],
@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, " Please provide a valid email"],
   },
-  signature: {
+  address: {
     type: String,
   },
 
@@ -21,5 +21,5 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Auth = mongoose.model("User", AuthSchema);
+module.exports = Auth;
