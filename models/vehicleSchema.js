@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const validCategories = [
-  "sedan",
-  "suv",
-  "hatchback",
-  "coupe",
-  "convertible",
-  "truck",
-  "van",
-  "other",
+  'sedan',
+  'suv',
+  'hatchback',
+  'coupe',
+  'convertible',
+  'truck',
+  'van',
+  'other',
 ];
 
 const carSchema = new mongoose.Schema(
@@ -55,9 +55,9 @@ const carSchema = new mongoose.Schema(
       },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-const Car = mongoose.model("Car", carSchema);
+const Car = mongoose.model('Car', carSchema);
 
 module.exports = Car;

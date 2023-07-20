@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Connect = () => {
   const mongoUrl = process.env.MONGO_URL;
   mongoose
@@ -6,7 +6,7 @@ const Connect = () => {
       useNewUrlParser: true,
     })
     .then(() => {
-      console.log("Connected to database");
+      console.log('Connected to database');
     })
     .catch((e) => console.log(e));
 };

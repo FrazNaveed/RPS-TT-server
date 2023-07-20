@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,11 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "fs": "0.0.1-security",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0"
   }
 }

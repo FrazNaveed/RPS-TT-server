@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const express = require("express");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const express = require('express');
 const router = express.Router();
-const Auth = require("../../models/authSchema");
+const Auth = require('../../models/authSchema');
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { signature, address } = req.body;
   return;
 
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     const oldUser = await User.findOne({ email });
 
     if (oldUser) {
-      return res.json({ error: "User Exists" });
+      return res.json({ error: 'User Exists' });
     }
     await User.create({
       fname,
@@ -23,9 +23,9 @@ router.post("/", async (req, res) => {
       userType,
       income,
     });
-    res.send({ status: "ok" });
+    res.send({ status: 'ok' });
   } catch (error) {
-    res.send({ status: "error" });
+    res.send({ status: 'error' });
   }
 });
 
