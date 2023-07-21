@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/register', controllers.register);
-app.use('/metamask_login', controllers.register);
-app.use('/email_login', controllers.register);
+app.use('/metamask_login', controllers.metamask_login);
+app.use('/email_login', controllers.email_login);
 app.use('/message', controllers.sign_message);
 
 app.listen(process.env.PORT || 5000, () => {

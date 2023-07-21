@@ -15,7 +15,7 @@ function GetSignerAddress(signature) {
 
     const address = ethUtil.pubToAddress(publicKey).toString('hex');
     const addr = '0x' + address;
-    return addr;
+    return addr.toLowerCase();
   } catch (error) {
     console.error('Error:', error);
     return null;

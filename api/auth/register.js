@@ -22,20 +22,19 @@ const register = async (email, address, password) => {
 router.post('/', async (req, res) => {
   const { email, address, signature } = req.body;
 
-  const userAddress = address || '';
+  const userAddress = address.toLowerCase() || '';
   const usersignature = signature || '';
 
   if (userAddress && usersignature) {
     const recoveredAddress = GetSignerAddress(usersignature);
 
-    if (recoveredAddress.toUpperCase() !== userAddress.toUpperCase()) {
+    if (recoveredAddress !== userAddress) {
       return res.status(400).json({ error: 'Invalid signature for the provided address' });
     }
   }
 
   try {
     const existingUser = await Auth.findOne({ email });
-
     if (existingUser) {
       if (userAddress && usersignature) {
         const recoveredAddress = GetSignerAddress(usersignature);
