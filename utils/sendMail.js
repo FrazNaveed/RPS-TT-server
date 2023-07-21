@@ -1,34 +1,34 @@
-require('dotenv').config();
 const nodemailer = require('nodemailer');
-const { GeneratePassword } = require('./generatePassword');
+const util = require('util');
+require('dotenv').config();
 
-const SendEmail = (email) => {
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: process.env.MAIL_USERNAME,
-      pass: process.env.MAIL_PASSWORD,
-      clientId: process.env.OAUTH_CLIENTID,
-      clientSecret: process.env.OAUTH_CLIENT_SECRET,
-      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-    },
-  });
-  const password = GeneratePassword();
-  const mailOptions = {
-    from: process.env.MAIL_USERNAME,
-    to: email,
-    subject: 'Your Password for login',
-    text: `Password: ${password}`,
-  };
+const SendEmail = async (email, password) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+      },
+    });
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
+    const mailOptions = {
+      from: process.env.MAIL_USERNAME,
+      to: email,
+      subject: 'Welcome!',
+      text: `Your password for login is: ${password}`,
+    };
+    const sendMailAsync = util.promisify(transporter.sendMail.bind(transporter));
+    const info = await sendMailAsync(mailOptions);
+    return info.response;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
 };
 
 module.exports = { SendEmail };
