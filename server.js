@@ -15,6 +15,7 @@ app.use('/email_login', controllers.email_login);
 app.use('/message', controllers.sign_message);
 app.use('/create', controllers.create_car);
 app.use('/update', controllers.update_car);
+app.use('/delete', controllers.delete_car);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server Started');

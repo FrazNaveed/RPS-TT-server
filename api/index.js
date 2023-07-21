@@ -4,6 +4,7 @@ const email_login = require('./auth/emailLogin');
 const sign_message = require('./auth/message');
 const create_car = require('./management/create');
 const update_car = require('./management/update');
+const delete_car = require('./management/delete');
 
 const controllers = {
   register,
@@ -12,6 +13,7 @@ const controllers = {
   sign_message,
   create_car,
   update_car,
+  delete_car,
 };
 
 module.exports = controllers;
