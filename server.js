@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/register', controllers.register);
 app.use('/metamask_login', controllers.register);
 app.use('/email_login', controllers.register);
+app.use('/message', controllers.sign_message);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server Started');
