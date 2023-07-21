@@ -5,6 +5,7 @@ const sign_message = require('./auth/message');
 const create_car = require('./management/create');
 const update_car = require('./management/update');
 const delete_car = require('./management/delete');
+const read_car = require('./management/read');
 
 const controllers = {
   register,
@@ -14,6 +15,7 @@ const controllers = {
   create_car,
   update_car,
   delete_car,
+  read_car,
 };
 
 module.exports = controllers;
