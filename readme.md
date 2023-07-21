@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
 - [Installation](#installation)
+- [.env File Configuration](#configuration)
 - [API Endpoints](#api-endpoints)
 
 ## Introduction
