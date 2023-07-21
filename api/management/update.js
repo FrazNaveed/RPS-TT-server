@@ -8,6 +8,7 @@ router.put('/:id', async (req, res) => {
 
   try {
     const vehicle = await Vehicle.findOne({ registrationNumber: vehicleId });
+
     if (!vehicle) {
       return res.status(404).json({ error: 'Vehicle not found' });
     }

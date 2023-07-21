@@ -8,13 +8,14 @@ const { SendEmail } = require('../../utils/sendMail');
 
 const register = async (email, address, password) => {
   try {
-    await Auth.create({
+    const res = await Auth.create({
       email,
       address,
       password,
     });
     return { success: true, message: 'User created successfully' };
   } catch (error) {
+    console.log(error);
     return { success: false, error: 'Failed to create user' };
   }
 };
