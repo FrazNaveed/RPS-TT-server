@@ -13,6 +13,8 @@ app.use('/register', controllers.register);
 app.use('/metamask_login', controllers.metamask_login);
 app.use('/email_login', controllers.email_login);
 app.use('/message', controllers.sign_message);
+app.use('/create', controllers.create_car);
+app.use('/update', controllers.update_car);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server Started');

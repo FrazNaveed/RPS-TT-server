@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
+const { validCategories } = require('../constants/index');
 
-const validCategories = [
-  'sedan',
-  'suv',
-  'hatchback',
-  'coupe',
-  'convertible',
-  'truck',
-  'van',
-  'other',
-];
-
-const carSchema = new mongoose.Schema(
+const vehicleSchema = new mongoose.Schema(
   {
+    userId: {
+      type: String,
+      required: true,
+    },
     categories: {
       type: String,
       required: true,
@@ -48,16 +42,16 @@ const carSchema = new mongoose.Schema(
       uppercase: true,
       validate: {
         validator: function (value) {
-          return /^[A-Z]{2}-[0-9]{2}-[A-Z]{1,2}-[0-9]{1,4}$/.test(value);
+          return /^([A-Z]{3}-\d{4})$/.test(value);
         },
         message: (props) =>
-          `${props.value} is not a valid registration number! Format should be: AB-12-CD-1234`,
+          `${props.value} is not a valid registration number! Format should be: CDA-1234`,
       },
     },
   },
   { timestamps: true },
 );
 
-const Car = mongoose.model('Car', carSchema);
+const Vehicle = mongoose.model('Vehicle', vehicleSchema);
 
-module.exports = Car;
+module.exports = Vehicle;
