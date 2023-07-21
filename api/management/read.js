@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
 
   try {
     const user = await Auth.findOne({ email: email });
-    console.log(user);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
